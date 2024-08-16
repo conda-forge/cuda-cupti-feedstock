@@ -25,7 +25,7 @@ source:
   sha256: b65a34a3715e3ef2b835bdd36c43b21c20800325be1eda1e84ad4d80ee837c92  # [win]
 
 build:
-  number: 2
+  number: 3
   binary_relocation: false
   skip: true  # [osx]
 
@@ -57,6 +57,7 @@ outputs:
       - Library\bin\pcsamplingutil.dll        # [win]
     requirements:
       build:
+        - {{ stdlib("c") }}
         - {{ compiler("c") }}
         - {{ compiler("cxx") }}
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
@@ -79,6 +80,9 @@ outputs:
       doc_url: https://docs.nvidia.com/cuda/cupti/index.html
 
   - name: cuda-cupti-dev
+    build:
+      run_exports:
+        - {{ pin_subpackage("cuda-cupti", max_pin="x") }}
     files:
       - lib/checkpoint.so                         # [linux]
       - lib/libcupti.so                           # [linux]
@@ -90,6 +94,7 @@ outputs:
       - Library\lib\*.lib                         # [win]
     requirements:
       build:
+        - {{ stdlib("c") }}
         - {{ compiler("c") }}
         - {{ compiler("cxx") }}
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
