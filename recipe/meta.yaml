@@ -175,7 +175,7 @@ outputs:
     test:
       commands:
         - test -d $PREFIX/targets/{{ target_name }}/cuda-cupti/samples  # [linux]
-        - test -d $PREFIX/targets/{{ target_name }}/cuda-cupti/doc      # [linux]
+        - test -d $PREFIX/targets/{{ target_name }}/cuda-cupti/doc      # [linux and arm_variant_type != "tegra"]
     about:
       home: https://developer.nvidia.com/cuda-toolkit
       license_file: LICENSE
