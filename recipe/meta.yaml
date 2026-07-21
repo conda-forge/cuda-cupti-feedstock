@@ -24,7 +24,7 @@ source:
   sha256: e739e96415e1fb9a650eaac826f7cd24701e18ae2f7c26b78f3fabaf64c8e39b  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [osx or ppc64le]
 
 requirements:
@@ -84,7 +84,8 @@ outputs:
   - name: cuda-cupti-dev
     build:
       run_exports:
-        - {{ pin_subpackage("cuda-cupti", max_pin="x") }}
+        - {{ pin_subpackage("cuda-cupti", max_pin="x") }}      # [linux]
+        - {{ pin_subpackage("cuda-cupti", max_pin="x.x.x") }}  # [win]
     files:
       - lib/checkpoint.so                         # [linux]
       - lib/libcupti.so                           # [linux]
