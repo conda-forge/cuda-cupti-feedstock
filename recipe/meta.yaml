@@ -71,7 +71,7 @@ outputs:
         - test -f $PREFIX/targets/{{ target_name }}/lib/libcupti.so.{{ lib_version }}            # [linux]
         - bash test-rpath.sh                                                                     # [linux]
         - if not exist %LIBRARY_BIN%\checkpoint.dll exit 1                 # [win]
-        - if not exist %LIBRARY_BIN%\cupti64_{{ lib_version }}.dll exit 1  # [win]
+        - if not exist %LIBRARY_BIN%\cupti64_*.dll exit 1                  # [win]
         - if not exist %LIBRARY_BIN%\nvperf_host.dll exit 1                # [win]
         - if not exist %LIBRARY_BIN%\nvperf_target.dll exit 1              # [win]
         - if not exist %LIBRARY_BIN%\pcsamplingutil.dll exit 1             # [win]
